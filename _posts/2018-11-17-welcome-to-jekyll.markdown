@@ -10,6 +10,6 @@ excerpt: 第一篇，仅以纪念。
 
 但最重要的还是持之以恒吧！共勉！
 
-使用的主题为[HyG](https://github.com/Gaohaoyang)设计，个人比较喜欢。喜欢的也可以自行DIY。前面没接触过，就不班门弄斧了。
+使用的主题为[HyG](https://github.com/Gaohaoyang)设计，个人比较喜欢。喜欢的也可以自行DIY。前端没接触过，就不班门弄斧了。
 
 谢谢各位看官驻足。

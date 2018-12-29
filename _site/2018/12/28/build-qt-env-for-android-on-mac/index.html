@@ -6,15 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Archives</title>
-    <meta name="description" content="">
+    <title>build QT env for android on MacOS</title>
+    <meta name="description" content="环境搭建。">
 
     <link rel="shortcut icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://at.alicdn.com/t/font_8v3czwksspqlg14i.css">
     <link rel="stylesheet" href="/css/main.css ">
-    <link rel="canonical" href="http://localhost:4000/archive/">
+    <link rel="canonical" href="http://localhost:4000/2018/12/28/build-qt-env-for-android-on-mac/">
     <link rel="alternate" type="application/rss+xml" title="DrDrug" href="http://localhost:4000/feed.xml ">
 
 
@@ -56,8 +56,8 @@
                     
                     <li>
                         
-                        <a class="active" href="/archive/">
-                            
+                        <a href="/archive/">
+                        
                             <i class="fa fa-archive"></i>Archives
                         </a>
                     </li>
@@ -125,27 +125,25 @@
 </header>
 
 
-        <!-- <h1>Archive of posts with page 'Archives'</h1> -->
-
-
-<div class="page clearfix">
+        <div class="page clearfix" post>
     <div class="left">
-        <h1>Archives</h1>
-        <hr>
-        <ul>
-          
+        <h1>build QT env for android on MacOS</h1>
+        <div class="label">
 
-            
-              <h2 id="y2018">2018</h2>
-            
+            <div class="label-card">
+                <i class="fa fa-calendar"></i>2018-12-28
+            </div>
 
-            <li>
-                <time>
-                2018-12-28 Fri.
-                </time>
-                <a class="title" href="/2018/12/28/build-qt-env-for-android-on-mac/">build QT env for android on MacOS</a>
-
+            <div class="label-card">
                 
+            </div>
+
+            <div class="label-card">
+                
+            </div>
+
+            <div class="label-card">
+            
 
 
 <!-- <span class="point">•</span> -->
@@ -161,70 +159,163 @@
 </span>
 
 
-                
+            </div>
+
+            <div class="label-card">
+            
 <!-- <span class="point">•</span> -->
 <span class="pageTag">
   <i class="fa fa-tags"></i>
   
     
+        <!--a href="/tag/#qt" title="Tag: qt" rel="tag">qt</a-->
         <a href="/tag/#qt" title="Tag: qt" rel="tag">qt</a>&nbsp;
     
+        <!--a href="/tag/#android" title="Tag: android" rel="tag">android</a-->
         <a href="/tag/#android" title="Tag: android" rel="tag">android</a>&nbsp;
     
+        <!--a href="/tag/#mac" title="Tag: mac" rel="tag">mac</a-->
         <a href="/tag/#mac" title="Tag: mac" rel="tag">mac</a>
     
   
 
 </span>
 
-            </li>
+            </div>
 
-          
+        </div>
+        <hr>
+        <article itemscope itemtype="http://schema.org/BlogPosting">
+        <ul id="markdown-toc">
+  <li><a href="#1-安装准备" id="markdown-toc-1-安装准备">1. 安装准备</a></li>
+  <li><a href="#2-安装qt开发环境" id="markdown-toc-2-安装qt开发环境">2. 安装Qt开发环境</a></li>
+  <li><a href="#3-安装java-sdk" id="markdown-toc-3-安装java-sdk">3. 安装Java SDK</a></li>
+  <li><a href="#4-安装android-studio" id="markdown-toc-4-安装android-studio">4. 安装Android Studio</a></li>
+  <li><a href="#5-使用qt开发android" id="markdown-toc-5-使用qt开发android">5. 使用Qt开发Android</a></li>
+  <li><a href="#结语" id="markdown-toc-结语">结语</a></li>
+</ul>
 
+<h2 id="1-安装准备">1. 安装准备</h2>
+<ul>
+  <li><a href="http://download.qt.io/archive/qt/">Qt</a>安装包，当前使用版本为5.11.2</li>
+  <li><a href="https://www.oracle.com/technetwork/java/javase/downloads/index.html">Java SDK</a>，下载最新的即可</li>
+  <li><a href="https://developer.android.com/studio/#downloads">Android Studio</a>，一般被墙，当然科学上网的手段是必不可少的了。</li>
+  <li><a href="https://developer.android.com/ndk/">Android NDK</a>，同上。</li>
+  <li>下载完后，最好检查下SHA，防止植入。</li>
+</ul>
+
+<h2 id="2-安装qt开发环境">2. 安装Qt开发环境</h2>
+<ol>
+  <li>QT安装包直接安装即可，在选择安装配置的时候，为了后期开放方便，还是全都选上吧。其中：
+    <ul>
+      <li>armv7a：真机的交叉编译环境，编译生成的APP可以部署上Android设备运行。</li>
+      <li>x86：本机的交叉编译环境，主要用于模拟APP运行场景。尽管模拟器能模拟armv7a的环境，但会巨慢。</li>
+      <li>clang：Mac的编译环境，想在Mac/IOS上玩耍的，可以试试。</li>
+    </ul>
+  </li>
+  <li>安装的过程会要求安装XCode，这个当然最好从App Store下载安装了，会比较安全。</li>
+  <li>安装结束后，将安装路径下的：Qt Creator.app拷贝到Application目录，方便日常使用。</li>
+</ol>
+
+<h2 id="3-安装java-sdk">3. 安装Java SDK</h2>
+<ol>
+  <li>安装也是傻瓜式的安装了，一路狂点。</li>
+  <li>配置环境变量：
+    <ul>
+      <li>export JAVA_HOME=Java安装路径</li>
+      <li>export CLASSPATH=.:$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib/dt.jar</li>
+      <li>export PATH=$JAVA_HOME/bin:$PATH</li>
+    </ul>
+  </li>
+  <li>自行java -version；能输出安装的版本号即为安装完成。</li>
+</ol>
+
+<h2 id="4-安装android-studio">4. 安装Android Studio</h2>
+<ol>
+  <li>安装也是与JAVA SDK一样啦，狂点(可能需要科学上网更新相关组件)</li>
+  <li>配置环境变量：
+    <ul>
+      <li>export ANDORID_NDK_ROOT=/xxxx #NDK安装路径</li>
+      <li>export ANDROID_SDK_ROOT=/xxxx #SDK安装路径，一般为Android Studio安装的SDK路径</li>
+    </ul>
+  </li>
+  <li>安装开发用的SDK版本：
+    <ul>
+      <li>Preference -&gt; Appearance &amp; Behavior -&gt; System Settings -&gt; Android SDK(Tool -&gt; SDK Manager)</li>
+      <li>勾选需要安装的API Level,等待安装完成</li>
+    </ul>
+  </li>
+  <li>创建AVD(Android Virtual Device)
+    <ul>
+      <li>Tool -&gt; AVD Manager</li>
+      <li>Create Virtual Device</li>
+      <li>选择需要仿真的平台类型，或New Hardware Profile..</li>
+      <li>选择硬件类型后，需要选择该类型使用的System Image，这里选择x86架构的ABI，如果选择armv7a，运行起来可能巨慢无比。</li>
+      <li>对于未安装的System Image，安装即可</li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="5-使用qt开发android">5. 使用Qt开发Android</h2>
+<ol>
+  <li>配置QCreator环境
+    <ul>
+      <li>Preference -&gt; Devices</li>
+      <li>配置JAVA SDK、Android SDK、Android NDK路径</li>
+      <li>确保各个Kits的警告消除，能正常使用</li>
+    </ul>
+  </li>
+  <li>新建项目
+    <ul>
+      <li>新建支持Android平台的项目</li>
+      <li>配置项目选择x86或armv7a，前者在本地模拟，后者在真机运行</li>
+      <li>编译通过后，最后调试运行：开始调试后，选择对应的ABI即可。</li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="结语">结语</h2>
+<p>随手笔记，至于图文并茂的效果，再说了。</p>
+
+
+        </article>
+        <hr>
+
+        
+        
             
-              
-              
-              
             
-
-            <li>
-                <time>
-                2018-11-17 Sat.
-                </time>
-                <a class="title" href="/2018/11/17/welcome-to-jekyll/">Hello Jekyll!</a>
-
                 
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#jekyll" title="Category: jekyll" rel="category">jekyll</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
+                    
                 
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#jekyll" title="Tag: jekyll" rel="tag">jekyll</a>
-    
-  
+                    
+                
+                    
+                
+            
+        
+        
 
-</span>
+        <div class="post-recent">
+    <div class="pre">
+        
+        <p><strong>上一篇</strong> <a href="/2018/11/17/welcome-to-jekyll/">Hello Jekyll!</a></p>
+        
+    </div>
+    <div class="nex">
 
-            </li>
+        
+    </div>
+</div>
 
-          
-        </ul>
+
+        <h2 id="comments">Comments</h2>
+        
+
+
+
+
+
     </div>
     <button class="anchor"><i class="fa fa-anchor"></i></button>
     <div class="right">
@@ -237,20 +328,7 @@
                 </div>
                 <ul id="content-side" class="content-ul">
                     
-                        
-                          
-                          
-                          
-                          
-                        
-                          
-                          
-                          
-                          
-                            <li><a data-scroll href="#y2018">2018 (2)</a></li>
-                            
-                          
-                        
+                    <li><a href="#comments">Comments</a></li>
                 </ul>
             </div>
             <!-- 其他div框放到这里 -->
@@ -258,6 +336,17 @@
         </div>
     </div>
 </div>
+<script>
+/**
+ * target _blank
+ */
+(function() {
+    var aTags = document.querySelectorAll('article a:not([id])')
+    for (var i = 0; i < aTags.length; i++) {
+        aTags[i].setAttribute('target', '_blank')
+    }
+}());
+</script>
 <script src="/js/pageContent.js " charset="utf-8"></script>
 
 
